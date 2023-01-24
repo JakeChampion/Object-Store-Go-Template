@@ -24,3 +24,10 @@ service_id = ""
 
 [scripts]
   build = "tinygo build -target=wasi -gc=conservative -o bin/main.wasm ./"
+
+[setup]
+
+  [setup.object_stores]
+
+    [setup.object_stores.my-store]
+      description = "My first object store"
