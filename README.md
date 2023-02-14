@@ -54,12 +54,12 @@ Object Stores have to have unique names within a Fastly Account.
 To create an Object Store we run the following command, replacing `<UNIQUE_STORE_NAME_GOES_HERE>` with the name for the new Object Store:
 
 ```shell
-fastly objectstore create --name=<UNIQUE_STORE_NAME_GOES_HERE>
+fastly object-store create --name=<UNIQUE_STORE_NAME_GOES_HERE>
 ```
 
 Make a note of the Object Store's ID, the ID can be found by listing the Object Stores:
 ```shell
-fastly objectstore list | grep -A 3 '<UNIQUE_STORE_NAME_GOES_HERE>'
+fastly object-store list | grep -A 3 '<UNIQUE_STORE_NAME_GOES_HERE>'
 ```
 
 ### Deploy Application to Fastly Service
@@ -111,12 +111,12 @@ fastly log-tail
 
 It is possible to add key-value pairs to an Object Store using the Fastly CLI like so:
 ```shell
-fastly objectstore insert --id=$FASTLY_OBJECT_STORE_ID --k=$KEY --v=$VALUE
+fastly object-store insert --id=$FASTLY_OBJECT_STORE_ID --k=$KEY --v=$VALUE
 ```
 
 For example, here is how you could add to the Object Store named `my-store` a key named `readme` whose value is the contents of `README.md`:
 ```shell
-fastly objectstore get --id="$(fastly objectstore list | grep -A 3 'my-store' | tail -n 1 | grep -o '[a-z0-9]*')" --k="readme" --v="$(cat README.md)"
+fastly object-store get --id="$(fastly object-store list | grep -A 3 'my-store' | tail -n 1 | grep -o '[a-z0-9]*')" --k="readme" --v="$(cat README.md)"
 ```
 
 ## Security issues
